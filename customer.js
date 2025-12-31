@@ -44,8 +44,25 @@ const addCustomer= async ()=>{
     let result = await Customer.find({}).populate("orders");
     console.log(result);
 }
-addCustomer();
+// addCustomer();
 
+const addCust= async ()=>{
+    let newcust = new Customer ({
+        name: "karan",
+
+    });
+    let neworder= new Order ({
+        item:"pizza",
+        price: 250,
+    });
+
+    newcust.orders.push(neworder);
+    await newcust.save();
+    await neworder.save();
+    console.log("add new customer");
+
+}
+addCust();
 
 
 // const addOrder= async ()=>{
